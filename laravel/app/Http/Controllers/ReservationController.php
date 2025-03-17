@@ -21,7 +21,7 @@ class ReservationController extends Controller
             'date_debut'=> 'required|date|max:10',
             'date_fin'=> 'required|date|max:10',
             'moyen_paiement'=> 'required|string|max:20',
-            'numero_carte'=> 'required|string|max:30',
+            'numero_carte'=> 'required|string|max:16',
             'cvv'=> 'required|string|max:6',
             'date_expiration'=> 'required|date|max:10'
         ]);

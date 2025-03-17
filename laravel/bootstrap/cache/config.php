@@ -229,13 +229,15 @@
     ),
     'allowed_headers' => 
     array (
-      0 => '*',
+      0 => 'Content-Type',
+      1 => 'X-CSRF-TOKEN',
+      2 => 'Authorization',
     ),
     'exposed_headers' => 
     array (
     ),
     'max_age' => 0,
-    'supports_credentials' => false,
+    'supports_credentials' => true,
   ),
   'database' => 
   array (
@@ -636,11 +638,6 @@
     'stateful' => 
     array (
       0 => 'localhost',
-      1 => 'localhost:3000',
-      2 => '127.0.0.1',
-      3 => '127.0.0.1:8000',
-      4 => '::1',
-      5 => 'localhost',
     ),
     'guard' => 
     array (
@@ -697,7 +694,7 @@
     ),
     'cookie' => 'laravel_session',
     'path' => '/',
-    'domain' => NULL,
+    'domain' => 'localhost',
     'secure' => NULL,
     'http_only' => true,
     'same_site' => 'lax',

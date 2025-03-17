@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 function ReservationPage() {
   const [formData, setFormData] = useState({
@@ -25,22 +26,25 @@ function ReservationPage() {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+    
+    await axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie');
+    // Récupère le token CSRF depuis la balise <meta>
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+    
     try {
-      const response = await fetch('http://localhost/reservations', {
-        method: 'POST',
+      // Envoie les données du formulaire avec le token CSRF
+      const response = await axios.post('http://127.0.0.1:8000/reservations', formData, {
         headers: {
           'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+          'X-CSRF-TOKEN': csrfToken, // Envoie le token CSRF dans les en-têtes
+        }
       });
-  
-      const data = await response.json();
-  
-      if (response.ok) {
+
+      // Vérifie si la réponse est correcte
+      if (response.status === 200) {
         alert('Réservation réussie !');
       } else {
-        alert(`Erreur : ${data.message}`);
+        alert(`Erreur : ${response.data.message}`);
       }
     } catch (error) {
       console.error('Erreur de connexion à l\'API:', error);
@@ -50,19 +54,15 @@ function ReservationPage() {
   
   return (
     <div>
+      <Link to='/'>
+        <button type="button" className="btn btn-primary">Accueil</button>
+      </Link>
+      <br />
+      <br />
+      <div className="shadow p-3 mb-5 bg-body-tertiary rounded">
+        <p className="fw-bold fs-1 text-primary">Confirmez votre réservation</p>
+      </div>
 
-
-            <Link to='/'>
-              <button type="button" className="btn btn-primary">Accueil</button>
-            </Link>
-            <br />
-            <br />
-     
-
-      
-            <div className="shadow p-3 mb-5 bg-body-tertiary rounded">
-              <p className="fw-bold fs-1 text-primary">Confirmez votre réservation</p>
-            </div>
       <form className="row g-3 needs-validation" onSubmit={handleSubmit} noValidate>
         <div className="col-md-4">
           <label htmlFor="validationCustom01" className="form-label">Nom</label>
@@ -76,7 +76,7 @@ function ReservationPage() {
             required
           />
         </div>
-  
+
         <div className="col-md-4">
           <label htmlFor="validationCustom02" className="form-label">Prénoms</label>
           <input
@@ -89,7 +89,7 @@ function ReservationPage() {
             required
           />
         </div>
-  
+
         <div className="col-md-4">
           <label htmlFor="validationCustomUsername" className="form-label">Email</label>
           <input
@@ -102,7 +102,7 @@ function ReservationPage() {
             required
           />
         </div>
-  
+
         <div className="col-md-3">
           <label htmlFor="validationCustom04" className="form-label">Catégorie</label>
           <select
@@ -118,7 +118,7 @@ function ReservationPage() {
             <option value="Basse">Basse</option>
           </select>
         </div>
-  
+
         <div className="col-md-3">
           <label htmlFor="validationCustom05" className="form-label">Date de début</label>
           <input
@@ -131,7 +131,7 @@ function ReservationPage() {
             required
           />
         </div>
-  
+
         <div className="col-md-3">
           <label htmlFor="validationCustom06" className="form-label">Date de fin</label>
           <input
@@ -144,7 +144,7 @@ function ReservationPage() {
             required
           />
         </div>
-  
+
         <div className="col-md-3">
           <label htmlFor="validationCustom07" className="form-label">Moyen de paiement</label>
           <select
@@ -160,7 +160,7 @@ function ReservationPage() {
             <option value="Paypal">Paypal</option>
           </select>
         </div>
-  
+
         <div className="col-md-6">
           <label htmlFor="validationCustom08" className="form-label">Numéro de carte</label>
           <input
@@ -173,7 +173,7 @@ function ReservationPage() {
             required
           />
         </div>
-  
+
         <div className="col-md-6">
           <label htmlFor="validationCustom09" className="form-label">CVV</label>
           <input
@@ -186,7 +186,7 @@ function ReservationPage() {
             required
           />
         </div>
-  
+
         <div className="col-md-6">
           <label htmlFor="validationCustom10" className="form-label">Date d'expiration</label>
           <input
@@ -199,23 +199,14 @@ function ReservationPage() {
             required
           />
         </div>
-  <br />
-  <br />
-  <br />
-  <br />
-  
+
         <div className="col-12">
           <button className="btn btn-primary" type="submit">Confirmer la réservation</button>
         </div>
-        <br />
-  <br />
-  <br />
-  <br />
-  <br />
       </form>
+      <br /><br /><br />
     </div>
   );
-}  
+}
 
 export default ReservationPage;
-
