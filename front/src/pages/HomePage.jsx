@@ -3,12 +3,12 @@ import {Link} from "react-router-dom"
 
 function HomePage() {
   return (
-<div >
+<div className='bg-transparent text-body'>
+  
       <div className='welcome'>
       <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
         <p class="fw-bold fs-1 text-primary">Bienvenue sur Booking </p>
       </div>
-        <h1 class='fs-2'>votre plateforme de réservation de maison </h1>
       </div>
     <div id="carouselExampleDark" class="carousel carousel-dark slide mt-20">
         <div class="carousel-indicators">
@@ -62,6 +62,26 @@ function HomePage() {
    
     <br />
     <br />
+       
+
+
+        <div class="shadow-sm p-3  bg-transparent mb-5 bg-body-tertiary rounded">
+            <p className='fs-5 '>Notre site de réservation de maisons se distingue par son engagement envers la qualité et l'excellence. Grâce à une interface 
+                intuitive et des fonctionnalités optimisées, nous offrons une expérience utilisateur fluide et sécurisée,
+                 permettant à nos clients de réserver leur hébergement en toute confiance.
+                 Nos partenariats avec des propriétaires rigoureusement sélectionnés garantissent des logements de haut standing, répondant aux attentes 
+                 les plus exigeantes. Fiers de nos accomplissements, nous avons déjà facilité des milliers de réservations, avec un taux de satisfaction client
+                  dépassant les 95 %. Chaque amélioration apportée à notre plateforme témoigne de notre volonté constante de répondre aux besoins de nos utilisateurs 
+                  et de maintenir notre position
+                  de leader dans le domaine des réservations en ligne.
+            </p>
+            <br /><br />
+            
+            <Link to='/reservation'>
+                <button type="button" class="btn btn-outline-primary btn-lg">Réservez maintenant</button>
+            </Link>
+        
+        </div>
 
         <div class="row g-0 bg-body-secondary position-relative">
             <div class="col-md-6 mb-md-0 p-md-4">
@@ -83,11 +103,15 @@ function HomePage() {
                         <button type="button" class="btn btn-primary">Visitez les maisons disponibles</button>
                 </Link>
             </div>
-        </div>
 
 
-</div>
+        
+
+       
+
+ </div>
+ </div>
   )
-}
+};
 
 export default HomePage
