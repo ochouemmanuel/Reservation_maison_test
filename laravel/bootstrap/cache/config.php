@@ -213,7 +213,7 @@
   array (
     'paths' => 
     array (
-      0 => 'api/*',
+      0 => 'api/',
       1 => 'sanctum/csrf-cookie',
     ),
     'allowed_methods' => 
@@ -222,10 +222,7 @@
     ),
     'allowed_origins' => 
     array (
-      'allowed_origins' => 
-      array (
-        0 => 'http://localhost:5173',
-      ),
+      0 => 'http://localhost:5173',
     ),
     'allowed_origins_patterns' => 
     array (

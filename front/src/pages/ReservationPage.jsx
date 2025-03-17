@@ -6,10 +6,10 @@ function ReservationPage() {
     nom: '',
     prenoms: '',
     email: '',
-    categorie: 'Studio',
+    categorie: '',
     date_debut: '',
     date_fin: '',
-    moyen_de_paiement: 'Mastercard',
+    moyen_de_paiement: '',
     numero_carte: '',
     cvv: '',
     date_expiration: ''

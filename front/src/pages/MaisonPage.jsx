@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import API from "../config/api"
+import API from "../config/api";
+import axios from 'axios';
 
 function MaisonPage() {
   const [maisons, setMaisons] = useState([]);
@@ -9,10 +10,13 @@ function MaisonPage() {
   useEffect(() => {
     const fetchMaisons = async () => {
       try {
-        const response = await API.get('http://localhost:8000/maisons');
-        if (!response.ok) throw new Error(`Erreur HTTP : ${response.status}`);
-        const data = await response.json();
-        setMaisons(data);
+        const response = await axios.get('http://127.0.0.1:8000/maisons', {
+          headers: {
+            Accept: 'application/json',
+          }
+        });
+        
+        setMaisons(response.data);
       } catch (error) {
         console.error("Erreur :", error);
       } finally {
@@ -58,6 +62,11 @@ function MaisonPage() {
           )}
         </div>
       </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      
     </div>
   );
 }
