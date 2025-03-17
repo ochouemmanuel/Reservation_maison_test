@@ -14,22 +14,24 @@ class MaisonController extends Controller
 
     public function store(Request $request){
         $request -> validate([
-            'categorie' => 'required|string|max=30',
-            'pays' => 'required|string|max=50',
-            'ville' => 'required|string|max=50',
-            'description' => 'required|string|max=500',
-            'prix' => 'required|string',
+            'categorie' => 'required|string|max:30',
+            'pays' => 'required|string|max:50',
+            'ville' => 'required|string|max:50',
+            'description' => 'required|string|max:500',
+            'prix' => 'required|numeric|min:0',
+            'image' => 'required|string|url',
 
         ]);
 
         $maison = Maison::create([
-            'categorie' => $request->Catégorie,
-            'pays' => $request->Pays,
-            'ville' => $request->Ville,
-            'description' => $request->Description,
-            'prix' => $request->Prix,
-            'image' => $request->Image,
+            'categorie' => $request->categorie,
+            'pays' => $request->pays,
+            'ville' => $request->ville,
+            'description' => $request->description,
+            'prix' => $request->prix,
+            'image' => $request->image,
         ]);
+
 
         return response()->json(['message' => 'La maison a bien été enregistrée', 'maison' => $maison], 201);
     }

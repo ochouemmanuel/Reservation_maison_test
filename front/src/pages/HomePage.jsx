@@ -63,6 +63,28 @@ function HomePage() {
     <br />
     <br />
 
+        <div class="row g-0 bg-body-secondary position-relative">
+            <div class="col-md-6 mb-md-0 p-md-4">
+                <img src="/maison_7.jpeg" class="w-100" alt=""/>
+            </div>
+            <div class="col-md-6 p-4 ps-md-0 ">
+                <h5 class="fs-1 text-primary">Voici ....</h5>
+                <p>votre plateforme de confiance pour la réservation de maisons de vacances, d'appartements et de villas
+                     à travers le monde.
+                     Que vous recherchiez un chalet cosy en montagne, une villa luxueuse en 
+                     bord de mer ou un appartement moderne en ville, notre site vous propose une large sélection 
+                     d'hébergements adaptés à tous les goûts et budgets.</p>
+                <p>Grâce à une interface intuitive, des filtres de recherche avancés et des avis vérifiés,
+                     trouvez et réservez en quelques clics le logement parfait pour votre prochain séjour.
+                      Profitez d'une expérience de réservation simple, sécurisée et personnalisée, avec des offres 
+                      exclusives et un service client disponible 24/7 pour répondre à toutes vos questions.</p>
+                <p>Réservez en toute sérénité avec Booking</p>
+                <Link to='/maison'>
+                        <button type="button" class="btn btn-primary">Visitez les maisons disponibles</button>
+                </Link>
+            </div>
+        </div>
+
 
 </div>
   )

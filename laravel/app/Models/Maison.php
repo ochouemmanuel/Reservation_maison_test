@@ -10,6 +10,10 @@ class Maison extends Model
     use HasFactory;
 
     protected $fillable = [
-        'categorie','pays','ville','description','prix'
+        'categorie','pays','ville','description','prix',"image"
     ];
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
 }

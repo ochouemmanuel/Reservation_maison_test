@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('maison_id')->constrained()->onDelete('cascade');
             $table->string('nom')->nullable();
-            $table->string('prenom')->nullable();
+            $table->string('prenoms')->nullable();
             $table->string('email')->nullable();
             $table->string('categorie')->nullable();
             $table->string('date_debut')->nullable();
             $table->string('date_fin')->nullable();
-            $table->string('moyen_de_paiement')->nullable();
+            $table->string('moyen_paiement')->nullable();
             $table->string('numero_carte')->nullable();
             $table->string('cvv')->nullable();
             $table->string('date_expiration')->nullable();

@@ -11,14 +11,16 @@ class Kernel extends HttpKernel
      *
      * @var array
      */
-    protected $middleware = [
+
+     protected $middleware = [
         \Illuminate\Http\Middleware\TrustProxies::class,
-        \Illuminate\Http\Middleware\HandleCors::class,
+        \Illuminate\Http\Middleware\HandleCors::class,  
         \App\Http\Middleware\PreventRequestsDuringMaintenance::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
     ];
+
 
     /**
      * The application's route middleware groups.
@@ -36,7 +38,7 @@ class Kernel extends HttpKernel
         ],
 
 
-
+        'admin' => \App\Http\Middleware\CheckAdmin::class,
 
         'api' => [
 
@@ -53,7 +55,6 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,

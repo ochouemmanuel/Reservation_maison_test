@@ -4,11 +4,11 @@ use App\Http\Controllers\MaisonController;
 use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/maison', [MaisonController::class, 'store']);
-Route::get('/maison', [MaisonController::class, 'index']);
-Route::get('/maison/{id}', [MaisonController::class, 'show']);
+Route::post('/maisons', [MaisonController::class, 'store']);
+Route::get('/maisons', [MaisonController::class, 'index']);
+Route::get('/maisons/{id}', [MaisonController::class, 'show']);
 
-Route::post('/reservation', [ReservationController::class, 'store']);
-Route::get('/reservation', [ReservationController::class, 'index']);
-Route::get('/reservation/{id}', [ReservationController::class, 'show']);
+Route::post('/reservations', [ReservationController::class, 'store']);
+Route::get('/reservations', [ReservationController::class, 'index']);
+Route::get('/reservations/{id}', [ReservationController::class, 'show']);
 

@@ -1,40 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import API from "../config/api"
 
 function MaisonPage() {
   const [maisons, setMaisons] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fonction pour récupérer les maisons depuis l'API Laravel
     const fetchMaisons = async () => {
       try {
-        const response = await fetch('http://localhost/api/maison');  // Assurez-vous que l'URL de votre API est correcte
+        const response = await API.get('http://localhost:8000/maisons');
+        if (!response.ok) throw new Error(`Erreur HTTP : ${response.status}`);
         const data = await response.json();
-        setMaisons(data);  // Stocker les maisons dans l'état
+        setMaisons(data);
       } catch (error) {
-        console.error('Erreur lors de la récupération des maisons :', error);
+        console.error("Erreur :", error);
+      } finally {
+        setLoading(false);
       }
     };
 
-    fetchMaisons();  // Appel de la fonction pour récupérer les maisons à chaque chargement de la page
-  }, []);  // Le tableau vide assure que l'effet ne s'exécute qu'une seule fois lors du premier rendu
+    fetchMaisons();
+  }, []);
 
   return (
     <div>
       <Link to='/'>
         <button type="button" className="btn btn-primary">Accueil</button>
       </Link>
-      <br />
-      <br />
-      <br />
+
       <div className="shadow p-3 mb-5 bg-body-tertiary rounded">
         <p className="fw-bold fs-1 text-primary">Faites votre choix</p>
       </div>
 
       <div className="container w-100">
         <div className="row">
-          {/* Boucle sur les maisons et affichage dynamique */}
-          {maisons.length > 0 ? (
+          {loading ? (
+            <p className="fw-bold fs-3 text-primary">Chargement des maisons...</p>
+          ) : maisons.length > 0 ? (
             maisons.map((maison) => (
               <div className="col-md-4" key={maison.id}>
                 <div className="card" style={{ width: '18rem' }}>
@@ -51,7 +54,7 @@ function MaisonPage() {
               </div>
             ))
           ) : (
-            <p>Aucune maison disponible.</p>
+            <p className="fw-bold fs-3 text-primary">Aucune maison disponible</p>
           )}
         </div>
       </div>
@@ -60,4 +63,3 @@ function MaisonPage() {
 }
 
 export default MaisonPage;
-

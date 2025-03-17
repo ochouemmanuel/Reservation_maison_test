@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('ville')->nullable();
             $table->text('description')->nullable();
             $table->decimal('prix', 10, 2)->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
@@ -30,7 +31,7 @@ return new class extends Migration
      public function down()
      {
          Schema::table('maisons', function (Blueprint $table) {
-             $table->dropColumn(['categorie', 'pays', 'ville', 'description', 'prix']);
+             $table->dropColumn(['categorie', 'pays', 'ville', 'description', 'prix','image']);
          });
      }
 

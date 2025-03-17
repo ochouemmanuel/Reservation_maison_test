@@ -10,8 +10,12 @@ class Reservation extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nom','prenoms','email','categorie','date_debut',
+        'maison_id','nom','prenoms','email','categorie','date_debut',
         'date_fin','moyen_paiement','numero_carte',
         'cvv','date_expiration'
     ];
+    public function maison()
+    {
+        return $this->belongsTo(Maison::class);
+    }
 }
