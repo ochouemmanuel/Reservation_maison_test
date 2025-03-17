@@ -18,7 +18,7 @@ function HomePage() {
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active" data-bs-interval="10000">
-                <img src="/maison_11.jpg" class="d-block w-900" alt="..."/>
+                <img src="/m-5.jpg" class="d-block w-900" alt="..."/>
                 <div class=" text-white carousel-caption d-none d-md-block text-light">
                     <h5>Faites votre choix</h5>
                     <p>Réservez la maison qui vous tape le plus dans l'oeil, de toutes façon <br /> vous ne serez pas deçus.</p>
@@ -28,7 +28,7 @@ function HomePage() {
                 </div>
             </div>
             <div class="carousel-item" data-bs-interval="2000">
-                <img src="/maison_11.jpg" class="d-block w-900" alt="..."/>
+                <img src="/m-6.jpg" class="d-block w-900" alt="..."/>
                 <div class="carousel-caption d-none d-md-block text-light">
                     <h5>Faites votre choix</h5>
                     <p>Réservez la maison qui vous tape le plus dans l'oeil, de toutes façon <br /> vous ne serez pas deçus.</p>
